@@ -1,0 +1,19 @@
+% pali, linkchecker
+
+# 510-mggk-check-broken-hyperlinks-using-linkchecker-program
+bash $REPO_SCRIPTS_MGGK/510-mggk-check-broken-hyperlinks-using-linkchecker-program.sh
+
+# 902-linkchecker-extract-all-internal-external-images-links-from-given-urls
+cdy ; bash $REPO_SCRIPTS_MGGK/902-linkchecker-extract-all-internal-external-images-links-from-given-urls.sh
+
+# make_collages_from_images_from_given_url_1080x1920
+cdy; 902-linkchecker-extract-all-internal-external-images-links-from-given-urls ; MYDIR="$DIR_Y/_tmp_collage" ; mkdir -p $MYDIR ; cd $MYDIR ; for x in $(cat $(fd -I allimages_filtered --search-path="$DIR_Y" ) | grep -i "jpg" ) ; do wget $x ; done ; 2000-collage-maker-using-vendor-script-leelasrecipes ; convert_images_to_1080x1920_padded_imagemagick
+
+# linkchecker_extract_all_links_from_local_html_files_in_pwd
+myfunc() {OUTFILE="$(basename $1)-ALL-LINKS.csv" ; linkchecker --verbose -F csv/$OUTFILE --ignore-url="http" $1 ; cat $OUTFILE | cut -d";" -f8 | grep -iv "^#" | grep -i "http" | sort -u > $OUTFILE.FINAL.txt ; } ; for x in *.html ; do myfunc $x ; done
+
+# linkchecker_extract_all_external_internal_links_from_local_html_files_in_pwd
+myfunc() {OUTFILE="$(basename $1)-ALL-LINKS.csv" ; linkchecker --verbose --check-extern -F csv/$OUTFILE $1 ; } ; for x in *.html ; do myfunc $x ; done
+
+# 00215-extract_parent_urls_from_linkchecker_html_RESULTS_page_on_VPS
+bash $REPO_SCRIPTS/002-mini-scripts/00215-extract_parent_urls_from_linkchecker_html_RESULTS_page_on_VPS.sh
