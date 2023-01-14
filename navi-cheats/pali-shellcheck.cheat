@@ -2,4 +2,4 @@
 
 # check_errors_in_my_bash_script
 echo ">> CHECKING ERRORS. CHOOSE SCRIPT FROM BELOW ..."; shellcheck <my_script> ;
-$ my_script: fd -HIt f -e sh -bash 
+$ my_script: fd -HIt f -e sh -e bash 
