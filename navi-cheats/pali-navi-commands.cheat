@@ -1,0 +1,5 @@
+% pali, navi
+
+# Install cheats from my cheatsheets public repo
+navi repo add https://github.com/abhishek-paliwal/cheatsheets.git
+
