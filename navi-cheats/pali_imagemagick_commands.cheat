@@ -1,0 +1,70 @@
+% pali, imagemagick
+
+# 1_imagemagick_maker - convert all pngs to jpgs 
+sh $REPO_SCRIPTS/7-imagemagick-png-to-jpg.sh
+
+# 114_make_imagemagick_collage_with_title
+rename_lowercase ; bash $REPO_SCRIPTS/ffmpeg-commands/114_make_imagemagick_collage_with_title.sh
+
+# 115_imagemagick_print_custom_label_text_onto_images
+bash $REPO_SCRIPTS/ffmpeg-commands/115_imagemagick_print_custom_label_text_onto_images.sh
+
+# 114a_make_imagemagick_very_fancy_custom_collage
+bash $REPO_SCRIPTS/ffmpeg-commands/114a_make_imagemagick_very_fancy_custom_collage.sh
+
+# 116_imagemagick_crop_images_to_any_custom_dimensions
+bash $REPO_SCRIPTS/ffmpeg-commands/116_imagemagick_crop_images_to_any_custom_dimensions.sh
+
+# 117-imagemagick-sort-images-long-and-wide
+bash $REPO_SCRIPTS/ffmpeg-commands/117-imagemagick-sort-images-long-and-wide.sh
+
+# 118-imagemagick-make-title-slides-and-move-to-their-directories
+bash $REPO_SCRIPTS/ffmpeg-commands/118-imagemagick-make-title-slides-and-move-to-their-directories.sh
+
+# 119-imagemagick-make-video-slideshow-title-using-collage-n-text
+bash $REPO_SCRIPTS/ffmpeg-commands/119-imagemagick-make-video-slideshow-title-using-collage-n-text.sh
+
+# 120-imagemagick-create-random-image-with-user-input-text
+random_color_background=$(echo "#$(openssl rand -hex 3)") ; echo ">> Enter text" ; read text ; text_new=$(echo $text | sed "s+ +\\\\n+g") ; convert -background $random_color_background -fill white -size 800x1200 -gravity center label:"$text_new" $DIR_Y/_TITLE_$text.jpg
+
+# convert_images_to_1080x1920_padded_imagemagick
+size="1080x1920";color="white"; fd -e jpg -e png -x convert {} -thumbnail "$size"">" -background "$color" -gravity center -extent "$size" "$size"-{/}
+
+# convert_images_to_1920x1080_padded_imagemagick
+size="1920x1080";color="white"; fd -e jpg -e png -x convert {} -thumbnail "$size"">" -background "$color" -gravity center -extent "$size" "$size"-{/}
+
+# 114b_mggk_make_imagemagick_very_fancy_custom_collage
+bash $REPO_SCRIPTS_MGGK/114b_mggk_make_imagemagick_very_fancy_custom_collage.sh
+
+# 599-mggk-2020-CREATE-IMAGES-TO-DIFFERENT-RATIOS-USING-IMAGEMAGICK-IN-PWD
+bash $REPO_SCRIPTS_MGGK/599-mggk-2020-CREATE-IMAGES-TO-DIFFERENT-RATIOS-USING-IMAGEMAGICK-IN-PWD.sh
+
+# mggk_shortcode_collection_maker
+for x in 2020*.txt ; do 503b_mggk-hugo-list-collection-maker-from-hyperlinks-file $x ; done ; echo ">>>> NOTE: For making the image collage, run this command -> 114b_mggk_make_imagemagick_very_fancy_custom_collage " ;
+
+# pali_imagemagick_fixed_resize_images_by_width_or_height
+bash $REPO_SCRIPTS/002-mini-scripts/00206_pali_imagemagick_fixed_resize_images_by_width_or_height.sh
+
+# pali_imagemagick_create_10_random_images
+for x in $(seq 1 1 10); do convert -size 1000x1000 canvas:khaki  imagemagick_tmp_$x.jpg ; done ; ls
+
+# 1x1
+bash $REPO_SCRIPTS_MGGK/599-mggk-2020-CREATE-IMAGES-TO-DIFFERENT-RATIOS-USING-IMAGEMAGICK-IN-PWD.sh
+
+# 999-make-imagemagick-collage-vertically-and-horizontally
+bash $REPO_SCRIPTS/999-make-imagemagick-collage-vertically-and-horizontally.sh
+
+# imagemagick_ffmpeg_personal_commands_list
+bash $REPO_SCRIPTS_MGGK/999Z-mggk-PERSONAL-COMMANDS-FOR-ANU.sh imagemagick_ffmpeg
+
+# qpdf_convert_all_pdfs_to_PNGs_and_JPGs_in_pwd_using_imagemagick
+mogrify -alpha remove -verbose -density 500 -resize 1200 -format png ./*.pdf ; mogrify -alpha remove -verbose -density 500 -resize 1200 -format jpg ./*.pdf
+
+# make_collages_from_images_from_given_url_1080x1920
+cdy; 902-linkchecker-extract-all-internal-external-images-links-from-given-urls ; MYDIR="$DIR_Y/_tmp_collage" ; mkdir -p $MYDIR ; cd $MYDIR ; for x in $(cat $(fd -I allimages_filtered --search-path="$DIR_Y" ) | grep -i "jpg" ) ; do wget $x ; done ; 2000-collage-maker-using-vendor-script-leelasrecipes ; convert_images_to_1080x1920_padded_imagemagick' ;
+
+# imagemagick_fit_png_jpg_images_to_600x600_canvas
+tmpdir="tmpdir"  ; mkdir -p "$tmpdir" ; for x in $(fd -t f -e png -e jpg) ; do convert $x -resize 550x550 -background "#c0c0c0" -gravity center -extent 600x600 ./$tmpdir/fitted-$(basename $x) ; done  
+
+# imagemagick_fit_png_jpg_images_to_A4_size
+tmpdir="tmpdir"  ; mkdir -p "$tmpdir" ; for x in $(fd -t f -e png -e jpg) ; do convert $x -resize 2232x3158 -background "#c0c0c0" -gravity center -extent 2480x3508 ./$tmpdir/fitted-$(basename $x) ; done 
