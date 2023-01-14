@@ -1,0 +1,64 @@
+% pali, ffmpeg, video
+
+# ffmpeg_convert_webm_videos_to_mp4
+for x in *.webm ; do ffmpeg -i $x -preset veryfast converted-$x.mp4 ; done
+
+# ffmpeg_convert_webm_audios_to_mp3
+for x in *.webm ; do ffmpeg -i $x -acodec libmp3lame $x.mp3 ; done
+
+# ffmpeg_convert_mov_videos_to_mp4
+for x in *.mov ; do ffmpeg -i $x -vcodec h264 -acodec aac $x.mp4 ; done
+
+# video_cutting_in_1_minute_equal_parts_using_ffmpeg
+bash $REPO_SCRIPTS/002-mini-scripts/00203_video_cutting_in_1_minute_equal_parts_using_ffmpeg.sh
+
+# ffmpeg_webp_to_jpg
+for x in *.webp ; do filename=$(basename -- "$x") ; extension="${filename##*.}" ; filename="${filename%.*}" ; echo "CURRENT FILE = $x" ; ffmpeg -i $x $filename.jpg ; done
+
+# ffmpeg_extract_audio_from_mp4_video
+find . -type f -name "*.mp4" -exec bash -c '\''FILE="$1"; ffmpeg -i "${FILE}" -vn -c:a libmp3lame -y "${FILE%.mp4}.mp3";'\'' _ '\''{}'\'' \;
+
+# 111_ffmpeg_convert_opus_to_mp3
+bash $REPO_SCRIPTS/ffmpeg-commands/111-ffmpeg-convert-opus-to-mp3.sh
+
+# 112_ffmpeg_join_movies
+bash $REPO_SCRIPTS/ffmpeg-commands/112-ffmpeg-join-movies.sh
+
+# 113_ffmpeg_images_to_video_slideshow_maker
+rename_lowercase ; bash $REPO_SCRIPTS/ffmpeg-commands/113_ffmpeg_images_to_video_slideshow_maker.sh
+
+# 201_sorting_mp3_files_by_duration
+bash $REPO_SCRIPTS/ffmpeg-commands/201_sorting_mp3_files_by_duration.sh
+
+# 202_change_id3_tags_info_for_mp3
+bash $REPO_SCRIPTS/ffmpeg-commands/202-change-id3-tags-info-for-mp3.sh
+
+# 203-join-N-random-mp3-files-using-ffmpeg
+bash $REPO_SCRIPTS/ffmpeg-commands/203-join-N-random-mp3-files-using-ffmpeg.sh
+
+# 114_make_imagemagick_collage_with_title
+rename_lowercase ; bash $REPO_SCRIPTS/ffmpeg-commands/114_make_imagemagick_collage_with_title.sh
+
+# 115_imagemagick_print_custom_label_text_onto_images
+bash $REPO_SCRIPTS/ffmpeg-commands/115_imagemagick_print_custom_label_text_onto_images.sh
+
+# 114a_make_imagemagick_very_fancy_custom_collage
+bash $REPO_SCRIPTS/ffmpeg-commands/114a_make_imagemagick_very_fancy_custom_collage.sh
+
+# 116_imagemagick_crop_images_to_any_custom_dimensions
+bash $REPO_SCRIPTS/ffmpeg-commands/116_imagemagick_crop_images_to_any_custom_dimensions.sh
+
+# 117-imagemagick-sort-images-long-and-wide
+bash $REPO_SCRIPTS/ffmpeg-commands/117-imagemagick-sort-images-long-and-wide.sh
+
+# 118-imagemagick-make-title-slides-and-move-to-their-directories
+bash $REPO_SCRIPTS/ffmpeg-commands/118-imagemagick-make-title-slides-and-move-to-their-directories.sh
+
+# 119-imagemagick-make-video-slideshow-title-using-collage-n-text
+bash $REPO_SCRIPTS/ffmpeg-commands/119-imagemagick-make-video-slideshow-title-using-collage-n-text.sh
+
+# 120-ffmpeg-make-video-grid-collage
+bash $REPO_SCRIPTS/ffmpeg-commands/120-ffmpeg-make-video-grid-collage.sh
+
+# imagemagick_ffmpeg_personal_commands_list
+bash $REPO_SCRIPTS_MGGK/999Z-mggk-PERSONAL-COMMANDS-FOR-ANU.sh imagemagick_ffmpeg
