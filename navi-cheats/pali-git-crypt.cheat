@@ -1,0 +1,19 @@
+% pali, git-crypt, git
+
+# Install git-crypt (homebrew)
+brew install git-crypt
+
+# Set up the repository to use git-crypt
+git-crypt init
+
+# Export git-crypt key to parent directory
+git-crypt export-key ../git-crypt-key
+
+# Check git-crypt status about which files will be encrypted
+git-crypt status
+
+# Lock files using git-crypt to see how they look to public
+git-crypt lock
+
+# Unlock files using git-crypt 
+git-crypt unlock ../git-crypt-key

@@ -1,0 +1,43 @@
+% pali, rename
+
+# rename-images-with-custom-prefix-and-zero-padded-counters
+bash $REPO_SCRIPTS/1004-rename-images-with-custom-prefix-and-zero-padded-counters.sh
+
+# rename_chosen_files_by_adding_prefix_and_suffix
+echo "Enter FILE EXTENSION for files to be renamed [pdf/jpg/png/etc]:" ; read myextension ; echo ">> THESE FILES WILL BE RENAMED ..." ; fd "$myextension" -I ; echo "Enter  PREFIX:" ; read myprefix ; echo "Enter SUFFIX:" ; read mysuffix; fd "$myextension" -I -x mv {} "$myprefix-{.}-$mysuffix.$myextension" ; echo ">> Filenames after renaming ..." ; ls -l
+
+# rename_files-by-removing-first-N-words
+bash $REPO_SCRIPTS/1001b-rename-files-by-removing-first-N-words.sh
+
+# rename_files-by-removing-strange-chars
+bash $REPO_SCRIPTS/1001-rename-all-files-in-folder-by-removing-strange-chars.sh
+
+# rename_files-by-replacing-a-word-with-new-word
+bash $REPO_SCRIPTS/1002-rename-all-files-in-folder-by-replacing-a-word.sh
+
+# rename_files-with-first-N-words
+bash $REPO_SCRIPTS/1001a-rename-files-with-first-N-words.sh
+
+# rename_files_by_adding_prefix_counters
+n=1;for f in *.* ;do mv "$f" "$(printf "%03i_%s" "$n" "$f")";VARNAME=$(printf "%03i-%s" "$n" "$f") ;echo "\n >>>> RENAMED file = $n \n $f --> $VARNAME" ;((n++)); done ;
+
+# rename_files_by_naturally_sorting_numerically_then_adding_prefix_counters_starting_1001
+echo ">> FILE RENAME ORDER >>"; ls | sort -V; echo ">> BEGINNING RENAMING ..." ; n=1001;for f in $(ls | sort -V) ;do mv "$f" "$(printf "%04i_%s" "$n" "$f")";VARNAME=$(printf "%04i-%s" "$n" "$f") ;echo "\n >>>> RENAMED file = $n \n $f --> $VARNAME" ;((n++)); done ; echo ">> FINAL ORDER >>" ; ls | sort -V
+
+# rename_jpg_png_images_sequentially_based_upon_parent_directory
+bash $REPO_SCRIPTS/1005_rename_jpg_png_images_sequentially_based_upon_parent_directory.sh
+
+# rename_lowercase
+for f in * ; do mv -- "$f" "$(tr "[:upper:]" "[:lower:]" <<< "$f")" ; done
+
+# rename_titlecase_recursive
+tree; for DIRNAME in $(find . -type d) ; do python3 $REPO_SCRIPTS/2000_vendor_programs/rename_to_title_case.py $DIRNAME ; done ; tree
+
+# rename_titlecase_recursive_in_this_directory
+tree; python3 $REPO_SCRIPTS/2000_vendor_programs/rename_to_title_case.py $(pwd) ; tree
+
+# rename_uppercase
+for f in * ; do mv -- "$f" "$(tr "[:lower:]" "[:upper:]" <<< "$f")" ; done
+
+# rename_with_date
+bash $REPO_SCRIPTS/102_rename_files_with_creation_date.sh
