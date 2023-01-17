@@ -1,25 +1,25 @@
 % pali, cloudflare
 
-901-mggk-delete-cloudflare-cache-for-user-input-urls-adoria
+# 901-mggk-delete-cloudflare-cache-for-user-input-urls-adoria
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-delete-cloudflare-cache-for-user-input-urls.sh "ado"' ;
 
-901-mggk-get-all-image-links-from-mggk-webpages-for-cloudflare-cache
+# 901-mggk-get-all-image-links-from-mggk-webpages-for-cloudflare-cache
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-get-all-image-links-from-mggk-webpages-for-cloudflare-cache.sh' ; 
 
-901-mggk-get-and-save-cloudflare-cache-status-for-all-valid-mggk-urls-1K-150K
+# 901-mggk-get-and-save-cloudflare-cache-status-for-all-valid-mggk-urls-1K-150K
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-get-and-save-cloudflare-cache-status-for-all-valid-mggk-urls-1K-150K' ;
 
-901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls
+# 901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls.sh' ;
 
-901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls-leelasrecipes
+# 901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls-leelasrecipes
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-delete-cloudflare-cache-for-chosen-keyword-urls.sh "leelasrecipes"' ;
 
-901-mggk-delete-cloudflare-cache-for-user-input-urls
+# 901-mggk-delete-cloudflare-cache-for-user-input-urls
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-delete-cloudflare-cache-for-user-input-urls.sh' ;
 
-901-mggk-delete-cloudflare-cache-for-user-input-urls-leelasrecipes
+# 901-mggk-delete-cloudflare-cache-for-user-input-urls-leelasrecipes
 cdy; bash $REPO_SCRIPTS_MGGK_CLOUDFLARE/901-mggk-delete-cloudflare-cache-for-user-input-urls.sh "leelasrecipes"' ;
 
-mggk-get-cloudflare-cache-status-for-all-valid-MGGK-SITEMAP-URLS
+# mggk-get-cloudflare-cache-status-for-all-valid-MGGK-SITEMAP-URLS
 cdy; c=0; for x in $(cat $DIR_DROPBOX_SCRIPTS_OUTPUT/mggk_summary_cloudflare_AllValidSiteUrls.txt) ; do ((c++)); echo "count => $c" ; curl -Is $x | grep -i 'cache-status' ; done' ;
