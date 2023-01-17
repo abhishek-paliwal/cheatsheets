@@ -41,3 +41,9 @@ for f in * ; do mv -- "$f" "$(tr "[:lower:]" "[:upper:]" <<< "$f")" ; done
 
 # rename_with_date
 bash $REPO_SCRIPTS/102_rename_files_with_creation_date.sh
+
+# kela_rename_attachments_like_this
+bash $REPO_SCRIPTS/99_pali_rename_kela_attachments_like_this.sh
+
+# kela_rename_pdfs_by_adding_date_prefix_YYYYMM
+datevar=$(date +%Y%m) ; for file in *.pdf ; do mv $file $datevar-$file ; done
