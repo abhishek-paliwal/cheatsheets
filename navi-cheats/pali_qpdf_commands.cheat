@@ -1,0 +1,16 @@
+% pali, qpdf, pdf
+
+# qpdf_combine_join_all_pdfs_in_pwd_into_one_file
+qpdf --empty output_combined_pdf_final-$(date +%Y%m%d).pdf --pages *.pdf -- ; ls -al
+
+# qpdf_convert_all_pdfs_to_PNGs_and_JPGs_in_pwd_using_imagemagick
+mogrify -alpha remove -verbose -density 500 -resize 1200 -format png ./*.pdf ; mogrify -alpha remove -verbose -density 500 -resize 1200 -format jpg ./*.pdf
+
+# qpdf_display_number_of_pages_in_each_pdf_in_pwd
+for x in *.pdf ; do myvar=$(qpdf --show-npages $x) ; echo "$myvar = $x" ; done
+
+# qpdf_extract_first_5_pages_from_all_pdfs_in_pwd
+for x in *.pdf ; do echo "Current pdf = $x" ; qpdf --empty --pages $x 1-5 -- outfile-$(basename $x); done ; ls -al
+
+# qpdf_extract_first_page_from_all_pdfs_in_pwd
+for x in *.pdf ; do echo "Current pdf = $x" ; qpdf --empty --pages $x 1 -- outfile-$(basename $x); done ; ls -al
