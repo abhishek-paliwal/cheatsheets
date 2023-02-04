@@ -1,0 +1,7 @@
+% pali, google-cloud
+
+# (No browser) authorize gcloud to access the Cloud Platform with Google user credentials
+gcloud auth login --no-launch-browser
+
+# OCR text extraction from jpg/png files with automatic language detection
+for x in $(fd -e png -e jpg) ; do gcloud ml vision detect-text $x > OCR-$x.json ; done ; 
