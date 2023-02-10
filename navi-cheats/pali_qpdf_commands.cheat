@@ -14,3 +14,8 @@ for x in *.pdf ; do echo "Current pdf = $x" ; qpdf --empty --pages $x 1-5 -- out
 
 # qpdf_extract_first_page_from_all_pdfs_in_pwd
 for x in *.pdf ; do echo "Current pdf = $x" ; qpdf --empty --pages $x 1 -- outfile-$(basename $x); done ; ls -al
+
+# 00216_qpdf_rename_pdfs_in_pwd_by_prefixing_with_numpages_total_pages
+bash $REPO_SCRIPTS_MINI/00216_qpdf_rename_pdfs_in_pwd_by_prefixing_with_numpages_total_pages.sh
+
+
