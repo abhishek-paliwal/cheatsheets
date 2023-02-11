@@ -1,0 +1,6 @@
+% pali, misc_commands
+
+# split_a_textfile_into_pieces_broken_at_custom_regex
+gcsplit --quiet --prefix=textpart_chapter_ -b "%03d.txt" $(fd -e txt | fzf) "/^##/+0" "{*}"
+
+
