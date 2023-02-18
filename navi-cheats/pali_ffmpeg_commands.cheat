@@ -64,4 +64,7 @@ bash $REPO_SCRIPTS/ffmpeg-commands/120-ffmpeg-make-video-grid-collage.sh
 bash $REPO_SCRIPTS_MGGK/999Z-mggk-PERSONAL-COMMANDS-FOR-ANU.sh imagemagick_ffmpeg
 
 # 00217_join_mp3_files_sequentially_using_ffmpeg
-bash $REPO_SCRIPTS/002-mini-scripts/00217_join_mp3_files_sequentially_using_ffmpeg.sh
+bash $REPO_SCRIPTS_MINI/00217_join_mp3_files_sequentially_using_ffmpeg.sh
+
+# 00219_ffmpeg_rename_mp3_files_with_their_duration_in_hour_mins_secs
+bash $REPO_SCRIPTS_MINI/00219_ffmpeg_rename_mp3_files_with_their_duration_in_hour_mins_secs.sh
