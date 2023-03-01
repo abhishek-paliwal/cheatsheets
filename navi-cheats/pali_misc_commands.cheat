@@ -3,4 +3,8 @@
 # split_a_textfile_into_pieces_broken_at_custom_regex
 gcsplit --quiet --prefix=textpart_chapter_ -b "%03d.txt" $(fd -e txt | fzf) "/^##/+0" "{*}"
 
+# awk - Print line lengths (sorted) => number of characters in each line of chosen text file
+awk '{print length($0) " +++ " $0 }' <choose_file> | sort -n
 
+# awk - Print line lengths (non-sorted) => number of characters in each line of chosen text file
+awk '{print length($0) " +++ " $0 }' <choose_file> 
