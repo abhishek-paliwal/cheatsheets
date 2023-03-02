@@ -8,3 +8,9 @@ awk '{print length($0) " +++ " $0 }' $(fzf) | sort -n
 
 # awk - Print line lengths (non-sorted) => number of characters in each line of chosen text file
 awk '{print length($0) " +++ " $0 }' $(fzf)
+
+# pandoc_convert_html_to_markdown_all_files
+for x in *.html ; do pandoc --from=html --to=markdown_strict "$x" -o "$x.md" ; done
+
+# pandoc_convert_markdown_to_html_all_files
+for x in *.md ; do pandoc --from=markdown --to=html "$x" -o "$x.html" ; done
