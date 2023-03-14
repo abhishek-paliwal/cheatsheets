@@ -14,3 +14,9 @@ for x in *.html ; do pandoc --from=html --to=markdown_strict "$x" -o "$x.md" ; d
 
 # pandoc_convert_markdown_to_html_all_files
 for x in *.md ; do pandoc --from=markdown --to=html "$x" -o "$x.html" ; done
+
+# convert-all-csv-files-in-pwd-to-html-tables-bootstrap
+bash "$REPO_SCRIPTS_MGGK_PROJECTS/20210827-convert-all-csv-files-in-pwd-to-html-tables-bootstrap.sh"
+
+# 00221_hindi_to_english_transliteration_by_python
+python3 "$REPO_SCRIPTS_MINI/00221_hindi_to_english_transliteration_by_python.py"
