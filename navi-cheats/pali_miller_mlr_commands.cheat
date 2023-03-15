@@ -1,0 +1,16 @@
+% pali, miller, mlr, csv, json
+
+# miller - calculate (put) new column using existing column, having semi-colon as input and output field separator
+mlr --csv --ifs ';' --ofs ';' --from example1.csv put '$NEW_FIELD = $SOME_EXISTING_FIELD . "_CONCATENATE_THIS_TEXT"'
+
+# miller - join 2 csv files with a chosen FIELD_NAME, having semi-colon as input and output field separator
+mlr --csv --ifs ';' --ofs ';' join -u -j FIELD_NAME -f leftFile.csv otherFile.csv
+
+# miller - pretty print a csv file, having semi-colon as input field separator 
+mlr --csv --ifs ';' --opprint cat fileName.csv
+
+# miller - delete empty lines where all fields are empty
+mlr --csv --ifs ';' --ofs ';' skip-trivial-records inputfileName.csv
+
+# miller - remove/delete trailing/leading whitespaces
+mlr --csv --ifs ';' --ofs ';' clean-whitespace inputfileName.csv
