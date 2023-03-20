@@ -14,3 +14,6 @@ mlr --csv --ifs ';' --ofs ';' skip-trivial-records inputfileName.csv
 
 # miller - remove/delete trailing/leading whitespaces
 mlr --csv --ifs ';' --ofs ';' clean-whitespace inputfileName.csv
+
+# miller - search for approx / fuzzy value of a given field
+mlr --csv --ifs ';' filter '$BOOK_URL_HOME =~ "navaratri_parv"' $CSV_AWGP
