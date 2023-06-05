@@ -18,7 +18,7 @@ bash $REPO_CLOUD/googlecloud/ocr_googlecloud/extract-text-using-google-cloud-vis
 # Run 99_clean_and_convert_txtfile_to_valid_ssml_file
 bash $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project/99_clean_and_convert_txtfile_to_valid_ssml_file.sh ;
 
-# create_google_translated_outputs_from_text_files
+# Run create_google_translated_outputs_from_text_files
 python3 $REPO_CLOUD_GOOGLE/translate_googlecloud_python_project/create_google_translated_outputs_from_text_files.py ; 
 
 # Run OCR text extraction from jpg/png files with automatic language detection
@@ -42,15 +42,15 @@ convert $(exa --oneline *.jpg) outfile_jpgs.pdf
 # combine_all_pngs_to_pdf_using_imagemagick
 convert $(exa --oneline *.png) outfile_pngs.pdf
 
-# 00217_join_mp3_files_sequentially_using_ffmpeg
+# Run 00217_join_mp3_files_sequentially_using_ffmpeg
 bash "$REPO_SCRIPTS_MINI/00217_join_mp3_files_sequentially_using_ffmpeg.sh"
 
-# 00220_create_dirs_and_move_txt_pdf_mp3_files_based_upon_audiobook_mp3_name
+# Run 00220_create_dirs_and_move_txt_pdf_mp3_files_based_upon_audiobook_mp3_name
 bash "$REPO_SCRIPTS_MINI/00220_create_dirs_and_move_txt_pdf_mp3_files_based_upon_audiobook_mp3_name.sh"
 
-# 00223_ffmpeg_create_html_listing_of_mp3_files_with_their_duration_lengths_in_hours_mins_secs
+# Run 00223_ffmpeg_create_html_listing_of_mp3_files_with_their_duration_lengths_in_hours_mins_secs
 cd $DIR_Y; bash "$REPO_SCRIPTS_MINI/00223_ffmpeg_create_html_listing_of_mp3_files_with_their_duration_lengths_in_hours_mins_secs.sh"
 
-# 1003-gayatri-parivar-parse-download-book-as-html
+# Run 1003-gayatri-parivar-parse-download-book-as-html
 bash "$REPO_SCRIPTS_AWGP/1003_parse_html_using_bsoup/1003-gayatri-parivar-parse-download-book-as-html.sh"
 
