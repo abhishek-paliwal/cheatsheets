@@ -1,0 +1,56 @@
+% pali, awgp, gayatri
+
+# awgp_search_csv
+cd $DIR_Y; bash "$REPO_SCRIPTS_AWGP/search_awgp_csv/00_search_for_any_chosen_field_value.sh"
+
+# cdawgp
+cd "$REPO_SCRIPTS_AWGP"
+
+# cdgp - goto 1003 html extraction directory
+cd "$REPO_SCRIPTS_AWGP/1003_parse_html_using_bsoup"
+
+# cdä - goto GoogleCloud main text2speech programs directory
+cd $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project
+
+# Run OCR text extraction from jpg/png files with automatic language detection
+bash $REPO_CLOUD/googlecloud/ocr_googlecloud/extract-text-using-google-cloud-vision-ocr-hindi-english-finnish.sh ;
+
+# Run 99_clean_and_convert_txtfile_to_valid_ssml_file
+bash $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project/99_clean_and_convert_txtfile_to_valid_ssml_file.sh ;
+
+# create_google_translated_outputs_from_text_files
+python3 $REPO_CLOUD_GOOGLE/translate_googlecloud_python_project/create_google_translated_outputs_from_text_files.py ; 
+
+# Run OCR text extraction from jpg/png files with automatic language detection
+bash $REPO_CLOUD/googlecloud/ocr_googlecloud/extract-text-using-google-cloud-vision-ocr-hindi-english-finnish.sh ;
+
+# Run 98_run_this_in_case_of_incomplete_execution_and_python_errors
+bash $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project/98_run_this_in_case_of_incomplete_execution_and_python_errors.sh
+
+# Run 00_run_only_this_program_for_all_outputs.sh (full text2speech output from txt or ssml)
+bash $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project/00_run_only_this_program_for_all_outputs.sh
+
+# qpdf_convert_all_pdfs_to_JPGs_in_pwd_using_imagemagick
+mogrify -alpha remove -verbose -density 500 -resize 1200 -format jpg ./*.pdf
+
+# combine_all_gifs_to_pdf_using_imagemagick
+convert $(exa --oneline *.gif) outfile_gifs.pdf
+
+# combine_all_jpgs_to_pdf_using_imagemagick
+convert $(exa --oneline *.jpg) outfile_jpgs.pdf
+
+# combine_all_pngs_to_pdf_using_imagemagick
+convert $(exa --oneline *.png) outfile_pngs.pdf
+
+# 00217_join_mp3_files_sequentially_using_ffmpeg
+bash "$REPO_SCRIPTS_MINI/00217_join_mp3_files_sequentially_using_ffmpeg.sh"
+
+# 00220_create_dirs_and_move_txt_pdf_mp3_files_based_upon_audiobook_mp3_name
+bash "$REPO_SCRIPTS_MINI/00220_create_dirs_and_move_txt_pdf_mp3_files_based_upon_audiobook_mp3_name.sh"
+
+# 00223_ffmpeg_create_html_listing_of_mp3_files_with_their_duration_lengths_in_hours_mins_secs
+cd $DIR_Y; bash "$REPO_SCRIPTS_MINI/00223_ffmpeg_create_html_listing_of_mp3_files_with_their_duration_lengths_in_hours_mins_secs.sh"
+
+# 1003-gayatri-parivar-parse-download-book-as-html
+bash "$REPO_SCRIPTS_AWGP/1003_parse_html_using_bsoup/1003-gayatri-parivar-parse-download-book-as-html.sh"
+
