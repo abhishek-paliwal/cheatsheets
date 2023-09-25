@@ -9,8 +9,13 @@ for x in $(fd -e png -e jpg) ; do gcloud ml vision detect-text $x > OCR-$x.json 
 # Run OCR text extraction from jpg/png files with automatic language detection
 bash $REPO_CLOUD/googlecloud/ocr_googlecloud/extract-text-using-google-cloud-vision-ocr-hindi-english-finnish.sh ;
 
+# Do OCR and extract text from full PDF using documentAI google cloud
+python3 $REPO_CLOUD/googlecloud/ocr_googlecloud/extract-text-from-full-PDF-using-documentAI-google-cloud-vision-ocr-hindi-english-finnish.py ; 
+
 # 99_clean_and_convert_txtfile_to_valid_ssml_file
 bash $REPO_CLOUD/googlecloud/text2speech_googlecloud_python_project/99_clean_and_convert_txtfile_to_valid_ssml_file.sh ;
 
 # create_google_translated_outputs_from_text_files
 python3 $REPO_CLOUD_GOOGLE/translate_googlecloud_python_project/create_google_translated_outputs_from_text_files.py ; 
+
+
