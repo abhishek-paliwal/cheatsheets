@@ -65,3 +65,6 @@ tmpdir="tmpdir"  ; mkdir -p "$tmpdir" ; for x in $(fd -t f -e png -e jpg) ; do c
 
 # imagemagick_fit_png_jpg_images_to_A4_size
 tmpdir="tmpdir"  ; mkdir -p "$tmpdir" ; for x in $(fd -t f -e png -e jpg) ; do convert $x -resize 2232x3158 -background "#c0c0c0" -gravity center -extent 2480x3508 ./$tmpdir/fitted-$(basename $x) ; done 
+
+# mggk_resize_to_1200px_and_reduce_size_for_larger_than_950KB_jpg_png_images_in_pwd_using_imagemagick
+fd -t f -e png -e jpg -S +950k -x convert {} -resize 1200x -quality 85 {} ;
